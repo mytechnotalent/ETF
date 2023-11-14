@@ -42,7 +42,7 @@ Embedded Test Framework is a FREE and open-source embedded unit test framework f
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
 
-#include "test_main.c"
+#include "test_addition.c"
 
 #define RUN_TESTS 1
 
