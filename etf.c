@@ -39,7 +39,6 @@ static bool compare(const void* expected, const void* actual, size_t size) {
     return memcmp(expected, actual, size) == 0;
 }
 
-
 static void print_bytes(const void* data, size_t size) {
     printf("bytes: ");
     for (size_t i = 0; i < size; i++) {
