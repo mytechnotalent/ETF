@@ -23,11 +23,11 @@
 */
 
 /**
- * @file test_main.c
+ * @file test_addition.c
  *
- * @brief Functions to test the main source file.
+ * @brief Functions to test the addition source file.
  * 
- * This contains the functions to unit test the main source file
+ * This contains the functions to unit test the addition source file
  *
  * @author Kevin Thomas
  * @date   11/14/2023
