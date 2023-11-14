@@ -105,10 +105,10 @@ static void test_fail_output(const char* test_name, const void* expected_result,
  *         representations in case of a failure.
  *
  * @param  pass: Boolean indicating whether the test passed (true) or failed (false)
- * @param  test_name: The name or description of the test
- * @param  expected_result: Pointer to the expected result data block
- * @param  actual_result: Pointer to the actual result data block
- * @param  size: Size of the data blocks to compare in bytes
+ * @param  test_name: The name or description of the test.
+ * @param  expected_result: Pointer to the expected result data block.
+ * @param  actual_result: Pointer to the actual result data block.
+ * @param  size: Size of the data blocks to compare in bytes.
  * @retval None
  */
 void test(bool pass, const char* test_name, const void* expected_result, const void* actual_result, size_t size);
