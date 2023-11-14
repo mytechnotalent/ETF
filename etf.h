@@ -54,7 +54,7 @@
  * @param  size: Size of the data blocks to compare in bytes.
  * @retval True if the blocks are equal, false otherwise.
  */
-static bool compare(const void* expected, const void* actual, size_t size);
+static bool compare(const void *expected, const void *actual, size_t size);
 
 /**
  * @brief  Prints the hexadecimal representation of a block of memory.
@@ -68,7 +68,7 @@ static bool compare(const void* expected, const void* actual, size_t size);
  * @param  size: Size of the data block in bytes.
  * @retval None
  */
-static void print_bytes(const void* data, size_t size);
+static void print_bytes(const void *data, size_t size);
 
 /**
  * @brief  Prints a pass message for a test.
@@ -79,7 +79,7 @@ static void print_bytes(const void* data, size_t size);
  * @param  test_name: The name or description of the test that passed.
  * @retval None
  */
-static void test_pass_output(const char* test_name);
+static void test_pass_output(const char *test_name);
 
 /**
  * @brief  Prints a fail message for a test along with expected and actual results.
@@ -94,7 +94,7 @@ static void test_pass_output(const char* test_name);
  * @param  size: Size of the data blocks to compare in bytes.
  * @retval None
  */
-static void test_fail_output(const char* test_name, const void* expected_result, const void* actual_result, size_t size);
+static void test_fail_output(const char *test_name, const void *expected_result, const void *actual_result, size_t size);
 
 /**
  * @brief  Prints the result of a test based on pass/fail condition and comparison.

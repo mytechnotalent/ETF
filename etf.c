@@ -35,11 +35,11 @@
 
 #include "etf.h"
 
-static bool compare(const void* expected, const void* actual, size_t size) {
+static bool compare(const void *expected, const void *actual, size_t size) {
     return memcmp(expected, actual, size) == 0;
 }
 
-static void print_bytes(const void* data, size_t size) {
+static void print_bytes(const void *data, size_t size) {
     printf("bytes: ");
     for (size_t i = 0; i < size; i++) {
         printf("%02X ", ((const unsigned char*)data)[i]);
@@ -47,11 +47,11 @@ static void print_bytes(const void* data, size_t size) {
     printf("\n");
 }
 
-static void test_pass_output(const char* test_name) {
+static void test_pass_output(const char *test_name) {
     printf("PASS: %s\n", test_name);
 }
 
-static void test_fail_output(const char* test_name, const void* expected_result, const void* actual_result, size_t size) {
+static void test_fail_output(const char *test_name, const void *expected_result, const void *actual_result, size_t size) {
     printf("FAIL: %s\n", test_name);
     printf("      expected: ");
     print_bytes(expected_result, size);
@@ -59,7 +59,7 @@ static void test_fail_output(const char* test_name, const void* expected_result,
     print_bytes(actual_result, size);
 }
 
-void test(bool pass, const char* test_name, const void* expected_result, const void* actual_result, size_t size) {
+void test(bool pass, const char *test_name, const void *expected_result, const void *actual_result, size_t size) {
     bool condition = compare(expected_result, actual_result, size);
 
     if (pass) {
