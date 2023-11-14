@@ -58,6 +58,12 @@ int main(void) {
 }
 ```
 
+# Result
+```
+PASS: test_add_integers_valid
+PASS: test_add_integers_invalid
+```
+
 <br>
 
 ## UNDER DEVELOPMENT...
