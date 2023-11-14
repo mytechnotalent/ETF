@@ -42,12 +42,12 @@ void test_add_integers_valid(void) {
     int32_t expected_result = 5;
     int32_t actual_result = add_integers(2, 3);
 
-    assert_true_int32("'test_add_integers_valid'", actual_result == expected_result, expected_result, actual_result);
+    test("test_add_integers_valid", &expected_result, &actual_result, sizeof(int));
 }
 
 void test_add_integers_invalid(void) {
     int32_t expected_result = 5;
     int32_t actual_result = add_integers(3, 3);
 
-    assert_false_int32("'test_add_integers_invalid'", actual_result == expected_result, expected_result, actual_result);
+    test("test_add_integers_invalid", &expected_result, &actual_result, sizeof(int));
 }

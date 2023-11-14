@@ -38,57 +38,51 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <string.h>
 #include <stdio.h>
 
 /**
- * @brief  Prints the result of a test, including pass/fail status, expected and actual results.
+ * @brief  Compares two blocks of memory for equality.
  *
- *         This function takes parameters representing the result of a test,
- *         including whether it passed or failed, the name of the test, the
- *         condition tested, the expected result, and the actual result. It prints
- *         relevant information to the console.
+ *         This function compares two blocks of memory, specified by pointers to
+ *         the expected and actual data, for equality. It returns true if the
+ *         blocks are equal (have the same content), and false otherwise.
  *
- * @param  pass: Boolean indicating whether the test passed (true) or failed (false).
- * @param  test_name: The name or description of the test.
- * @param  condition: The condition being tested (e.g., test case number).
- * @param  expected_result: The expected result of the test.
- * @param  actual_result: The actual result obtained during the test.
- * @retval None
+ * @param  expected: Pointer to the expected data block.
+ * @param  actual: Pointer to the actual data block.
+ * @param  size: Size of the data blocks to compare in bytes.
+ * @retval True if the blocks are equal, false otherwise.
  */
-static void test_result(bool pass, const char* test_name, uint8_t condition, int32_t expected_result, int32_t actual_result);
+static bool compare(const void* expected, const void* actual, size_t size);
 
 /**
- * @brief  Asserts that a given condition is true and prints the result of the test.
+ * @brief  Prints the hexadecimal representation of a block of memory.
  *
- *         This function asserts that the specified condition is true. If the
- *         condition is true, it prints a message indicating that the test passed,
- *         along with the expected and actual results. If the condition is false,
- *         it prints a message indicating that the test failed and provides
- *         relevant information.
+ *         This function prints the hexadecimal representation of a block of
+ *         memory, specified by the pointer to the data and its size, to the
+ *         console. Each byte is printed as a two-digit hexadecimal number
+ *         followed by a space.
  *
- * @param  test_name: The name or description of the test.
- * @param  condition: The condition being tested (e.g., test case number).
- * @param  expected_result: The expected result of the test.
- * @param  actual_result: The actual result obtained during the test.
+ * @param  data: Pointer to the data block.
+ * @param  size: Size of the data block in bytes.
  * @retval None
  */
-void assert_true_int32(const char* test_name, uint8_t condition, int32_t expected_result, int32_t actual_result);
+static void print_bytes(const void* data, size_t size);
 
 /**
- * @brief  Asserts that a given condition is false and prints the result of the test.
+ * @brief  Compares two blocks of memory and prints the test result.
  *
- *         This function asserts that the specified condition is false. If the
- *         condition is false, it prints a message indicating that the test passed,
- *         along with the expected and actual results. If the condition is true,
- *         it prints a message indicating that the test failed and provides
- *         relevant information.
+ *         This function compares two blocks of memory, specified by pointers to
+ *         the expected and actual results, for equality. It prints a message
+ *         indicating whether the test passed or failed, along with the
+ *         hexadecimal representation of the expected and actual results.
  *
  * @param  test_name: The name or description of the test.
- * @param  condition: The condition being tested (e.g., test case number).
- * @param  expected_result: The expected result of the test.
- * @param  actual_result: The actual result obtained during the test.
+ * @param  expected_result: Pointer to the expected result data block.
+ * @param  actual_result: Pointer to the actual result data block.
+ * @param  size: Size of the data blocks to compare in bytes.
  * @retval None
  */
-void assert_false_int32(const char* test_name, uint8_t condition, int32_t expected_result, int32_t actual_result);
+void test(const char* test_name, const void* expected_result, const void* actual_result, size_t size);
 
 #endif // __ETF_H

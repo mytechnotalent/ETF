@@ -35,28 +35,29 @@
 
 #include "etf.h"
 
-
-static void test_result(bool pass, const char* test_name, uint8_t condition, int32_t expected_result, int32_t actual_result) {
-    if (pass)
-        printf("test %s passed!\r\n", test_name);
-    else
-        printf("test %s failed!\r\n", test_name);
-    printf("expected result: %d\r\n", expected_result);
-    printf("actual result: %d\r\n", actual_result);
-    printf("\r\n");
+static bool compare(const void* expected, const void* actual, size_t size) {
+    return memcmp(expected, actual, size) == 0;
 }
 
 
-void assert_true_int32(const char* test_name, uint8_t condition, int32_t expected_result, int32_t actual_result) {
-    if (!condition) 
-        test_result(false, test_name, condition, expected_result, actual_result);
-    else
-        test_result(true, test_name, condition, expected_result, actual_result);
+static void print_bytes(const void* data, size_t size) {
+    printf("bytes: ");
+    for (size_t i = 0; i < size; i++) {
+        printf("%02X ", ((const unsigned char*)data)[i]);
+    }
+    printf("\n");
 }
 
-void assert_false_int32(const char* test_name, uint8_t condition, int32_t expected_result, int32_t actual_result) {
-    if (condition) 
-        test_result(false, test_name, condition, expected_result, actual_result);
-    else
-        test_result(true, test_name, condition, expected_result, actual_result);
+void test(const char* test_name, const void* expected_result, const void* actual_result, size_t size) {
+    bool condition = compare(expected_result, actual_result, size);
+
+    if (!condition) {
+        printf("FAIL: %s\n", test_name);
+        printf("      expected: ");
+        print_bytes(expected_result, size);
+        printf("      actual  : ");
+        print_bytes(actual_result, size);
+    } else {
+        printf("PASS: %s\n", test_name);
+    }
 }
