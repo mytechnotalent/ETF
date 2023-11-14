@@ -104,7 +104,7 @@ static void test_fail_output(const char* test_name, const void* expected_result,
  *         expected and actual results and prints their hexadecimal
  *         representations in case of a failure.
  *
- * @param  pass: Boolean indicating whether the test passed (true) or failed (false)
+ * @param  pass: Boolean indicating whether the test passed (true) or failed (false).
  * @param  test_name: The name or description of the test.
  * @param  expected_result: Pointer to the expected result data block.
  * @param  actual_result: Pointer to the actual result data block.
