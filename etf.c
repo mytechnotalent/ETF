@@ -47,16 +47,31 @@ static void print_bytes(const void* data, size_t size) {
     printf("\n");
 }
 
-void test(const char* test_name, const void* expected_result, const void* actual_result, size_t size) {
+static void test_pass_output(const char* test_name) {
+    printf("PASS: %s\n", test_name);
+}
+
+static void test_fail_output(const char* test_name, const void* expected_result, const void* actual_result, size_t size) {
+    printf("FAIL: %s\n", test_name);
+    printf("      expected: ");
+    print_bytes(expected_result, size);
+    printf("      actual  : ");
+    print_bytes(actual_result, size);
+}
+
+void test(bool pass, const char* test_name, const void* expected_result, const void* actual_result, size_t size) {
     bool condition = compare(expected_result, actual_result, size);
 
-    if (!condition) {
-        printf("FAIL: %s\n", test_name);
-        printf("      expected: ");
-        print_bytes(expected_result, size);
-        printf("      actual  : ");
-        print_bytes(actual_result, size);
-    } else {
-        printf("PASS: %s\n", test_name);
+    if (pass) {
+        if (!condition)
+            test_fail_output(test_name, expected_result, actual_result, size);
+        else
+            test_pass_output(test_name);
+    }
+    else {
+        if (condition)
+            test_fail_output(test_name, expected_result, actual_result, size);
+        else
+            test_pass_output(test_name);
     }
 }

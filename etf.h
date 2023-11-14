@@ -45,8 +45,9 @@
  * @brief  Compares two blocks of memory for equality.
  *
  *         This function compares two blocks of memory, specified by pointers to
- *         the expected and actual data, for equality. It returns true if the
- *         blocks are equal (have the same content), and false otherwise.
+ *         the expected and actual data, for equality using the `memcmp` function.
+ *         It returns true if the blocks are equal (have the same content), and
+ *         false otherwise.
  *
  * @param  expected: Pointer to the expected data block.
  * @param  actual: Pointer to the actual data block.
@@ -70,19 +71,46 @@ static bool compare(const void* expected, const void* actual, size_t size);
 static void print_bytes(const void* data, size_t size);
 
 /**
- * @brief  Compares two blocks of memory and prints the test result.
+ * @brief  Prints a pass message for a test.
  *
- *         This function compares two blocks of memory, specified by pointers to
- *         the expected and actual results, for equality. It prints a message
- *         indicating whether the test passed or failed, along with the
- *         hexadecimal representation of the expected and actual results.
+ *         This function prints a "PASS" message for a test along with the test
+ *         name to the console.
  *
- * @param  test_name: The name or description of the test.
+ * @param  test_name: The name or description of the test that passed.
+ * @retval None
+ */
+static void test_pass_output(const char* test_name);
+
+/**
+ * @brief  Prints a fail message for a test along with expected and actual results.
+ *
+ *         This function prints a "FAIL" message for a test along with the test
+ *         name and the hexadecimal representation of the expected and actual
+ *         results to the console.
+ *
+ * @param  test_name: The name or description of the test that failed.
  * @param  expected_result: Pointer to the expected result data block.
  * @param  actual_result: Pointer to the actual result data block.
  * @param  size: Size of the data blocks to compare in bytes.
  * @retval None
  */
-void test(const char* test_name, const void* expected_result, const void* actual_result, size_t size);
+static void test_fail_output(const char* test_name, const void* expected_result, const void* actual_result, size_t size);
+
+/**
+ * @brief  Prints the result of a test based on pass/fail condition and comparison.
+ *
+ *         This function prints a message indicating whether the test passed or
+ *         failed based on the provided pass condition. It also compares the
+ *         expected and actual results and prints their hexadecimal
+ *         representations in case of a failure.
+ *
+ * @param  pass: Boolean indicating whether the test passed (true) or failed (false)
+ * @param  test_name: The name or description of the test
+ * @param  expected_result: Pointer to the expected result data block
+ * @param  actual_result: Pointer to the actual result data block
+ * @param  size: Size of the data blocks to compare in bytes
+ * @retval None
+ */
+void test(bool pass, const char* test_name, const void* expected_result, const void* actual_result, size_t size);
 
 #endif // __ETF_H
