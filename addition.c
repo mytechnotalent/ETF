@@ -25,7 +25,7 @@
 /**
  * @file addition.c
  *
- * @brief Functios for the addition source file.
+ * @brief Functions for the addition source file.
  * 
  * This contains the functions for addition source file.
  *
