@@ -27,7 +27,7 @@
  *
  * @brief Function prototypes for the addition source file.
  * 
- * This contains the function prototypes for addition source file.
+ * This contains the function prototypes for the addition source file.
  *
  * @author Kevin Thomas
  * @date   11/14/2023
